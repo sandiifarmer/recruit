@@ -1,0 +1,153 @@
+<!DOCTYPE HTML>
+<html class="fully">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title></title>
+<link rel="stylesheet" type="text/css" href="../css/base.css">
+<link rel="stylesheet" type="text/css" href="../css/recruit.css">
+<script src="../js/cfg.js"></script>
+<script src="../js/zepto.min.js"></script>
+</head>
+<body class="fully">
+<div class="container fully" id="container">
+	<div class="swipter-box fully">
+		<div class="swiper-wrapper">
+			<div class="swiper-slide">
+				<div class="bg">
+					<img data-src="../img/1.jpg">
+				</div>
+				<div class="arrow-box" style="bottom:50px;">
+					<div class="arrow"></div>
+				</div>
+			</div>
+			<div class="swiper-slide">
+				<div class="bg">
+					<img data-src="../img/2.jpg">
+				</div>
+				<div class="btn-box">
+					<div class="turn-btn continue"></div>
+				</div>
+			</div>
+			<div class="swiper-slide">
+				<div class="bg">
+					<img data-src="../img/3.jpg">
+				</div>
+				<div class="btn-box">
+					<div class="turn-btn accept"></div>
+				</div>
+			</div>
+			<div class="swiper-slide">
+				<div class="bg">
+					<img data-src="../img/4.jpg">
+				</div>
+				<div class="btn-box">
+					<div class="turn-btn accept"></div>
+				</div>
+			</div>
+			<div class="swiper-slide">
+				<div class="bg">
+					<img data-src="../img/5.jpg">
+				</div>
+				<div class="btn-box">
+					<div class="turn-btn accept"></div>
+				</div>
+			</div>
+			<div class="swiper-slide">
+				<div class="bg">
+					<img data-src="../img/6.jpg">
+				</div>
+				<div class="btn-box">
+					<div class="turn-btn accept"></div>
+				</div>
+			</div>
+			<div class="swiper-slide">
+				<div class="bg">
+					<img data-src="../img/7.jpg">
+				</div>
+				<div class="btn-box">
+					<div class="turn-btn accept"></div>
+				</div>
+			</div>
+			<div class="swiper-slide">
+				<div class="bg">
+					<img data-src="../img/8.jpg">
+				</div>
+			</div>
+			<div class="swiper-slide">
+				<div class="bg">
+					<img data-src="../img/9.jpg">
+				</div>
+				<div class="contact">
+					<div class="contact-bg">
+						<a class="contact-call" href="tel:10086"></a>
+						<div class="contact-wx"></div>
+					</div>
+				</div>
+			</div>
+			<div class="swiper-slide">
+				<div class="bg">
+					<img data-src="../img/10.jpg">
+				</div>
+				<div class="qrcode-box">
+					<div class="qrcode-inner">
+						<img data-src="../img/qrcode.jpg">
+					</div>					
+				</div>
+			</div>
+			<div class="swiper-slide">
+				<div class="bg">
+					<img data-src="../img/11.jpg">
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="preload-hide">
+		<img data-src="../img/finger-print.png">
+		<img data-src="../img/contact.png">
+	</div>
+</div>
+</body>
+
+
+<link rel="stylesheet" type="text/css" href="../css/preload.css">
+<script src="../js/preload.js"></script>
+<script>new Preload( "img" );</script>
+
+<link rel="stylesheet" type="text/css" href="../css/turn.css">
+<script src="../js/turn.js"></script>
+<script src="../js/finger.js"></script>
+<script>
+var main = new Turn();
+
+main.callback = function(){
+	if(this.page == 8) 
+		main.finger = new Finger(function(){ main.next(); });
+	if((this.page == 7 || this.page == 9) && main.finger)
+		main.finger.destroy();
+};
+
+$(".turn-btn").on("click", function(e){
+	var btn = $(e.currentTarget);
+	
+	setTimeout(function(){
+		if(btn.hasClass("continue")) main.next();
+		if(btn.hasClass("accept")) main.turn(8);
+	}, 400);
+
+	btn.addClass("checked");
+	setTimeout(function(){
+		btn.removeClass("checked");
+	}, 500);
+});
+
+$(".contact-wx").on("click", function(){
+	main.next();
+});
+
+main.ban(2, "next");
+main.ban(8, "next");
+
+
+</script>
+</html>

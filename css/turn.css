@@ -1,0 +1,13 @@
+.swiper-box,
+.swiper-wrap{width:100%; height:100%; position:relative; overflow:hidden;}
+.swiper-slide{position:absolute; width:100%; height:100%; left:0; top:0; overflow:hidden;}
+.swiper-slide.prev{width:0; height:0; left:50%;}
+.swiper-slide.next{width:100%; top:100%;}
+.swiper-slide{
+	-moz-transition: all .5s ease;
+	-webkit-transition: all .5s ease;
+	-o-transition: all .5s ease;
+	-ms-transition: all .5s ease;
+	transition: all .4s ease;
+}
+
